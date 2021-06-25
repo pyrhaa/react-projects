@@ -1,9 +1,13 @@
 import React from 'react';
 
-const Categories = ({filterItems}) => {
+//here if i put a new dishes with an other new category in my data.js file, everything is synch and we don't need to manually add new stuffs. 
+const Categories = ({categories ,filterItems}) => {
   return <div className="btn-container">
-    <button className="filter-btn" onClick={()=> filterItems('all')}>all</button>
-    <button className="filter-btn" onClick={()=> filterItems('breakfast')}>breakfast</button>
+    {categories.map((category, index) => {
+      return <button type='button' className='filter-btn' key={index} onClick={() => filterItems(category) }>
+        {category}
+        </button>
+    })}
   </div>
 };
 
