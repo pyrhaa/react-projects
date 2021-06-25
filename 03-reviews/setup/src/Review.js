@@ -5,6 +5,39 @@ import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 const Review = () => {
   const [index, setIndex] = useState(0);
   const { name, job, image, text } = people[index];
+
+  const checkNum = (num) => {
+    if (num > people.length - 1) {
+      return 0;
+    } else if (num < 0) {
+      return people.length - 1;
+    } else {
+      return num;
+    }
+  };
+
+  const nextPerson = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return checkNum(newIndex);
+    });
+  };
+
+  const prevPerson = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return checkNum(newIndex);
+    });
+  };
+  //the condition avoid the repetition of a profile
+  const randomPerson = () => {
+    let randomNum = Math.floor(Math.random() * people.length);
+    if (randomNum === index) {
+      randomNum = index + 1;
+    }
+    setIndex(checkNum(randomNum));
+  };
+
   return (
     <article className='review'>
       <div className='img-container'>
@@ -17,14 +50,16 @@ const Review = () => {
       <p className='job'>{job}</p>
       <p className='info'>{text}</p>
       <div className='button-container'>
-        <button className='prev-btn'>
+        <button className='prev-btn' onClick={prevPerson}>
           <FaChevronLeft />
         </button>
-        <button className='next-btn'>
+        <button className='next-btn' onClick={nextPerson}>
           <FaChevronRight />
         </button>
       </div>
-      <button className='random-btn'>suprise me</button>
+      <button className='random-btn' onClick={randomPerson}>
+        suprise me
+      </button>
     </article>
   );
 };
