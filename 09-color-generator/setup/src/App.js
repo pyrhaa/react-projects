@@ -6,8 +6,9 @@ import Values from 'values.js'
 function App() {
   const [color, setColor] = useState('');
   const [error, setError] = useState(false);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(new Values('#f15025').all(10));
 
+  //the .all(10) means select shades each 10% in generetor
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
@@ -30,9 +31,15 @@ function App() {
       </button>
     </form>
   </section>
+
+  <p>*** Submit a color and Click on a gradient to copy ***</p>
+
   <section className='colors'>
+    
     {list.map((color, index) => {
-      return <SingleColor key={index} {...color} index={index} hexColor={color.hex} />
+      return (
+      <SingleColor key={index} {...color} index={index} hexColor={color.hex} />
+      )
     })}
   </section>
   </>
