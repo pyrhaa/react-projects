@@ -24,6 +24,8 @@ function App() {
             type='text'
             className='submit-btn'
             placeholder='eggs, tomatos, etc...'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <button type='submit' className='submit-btn'>
             {isEditing ? 'edit' : 'submit'}
