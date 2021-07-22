@@ -16,7 +16,16 @@ function App() {
 
   return (
     <section className='section-center'>
-      <form className='grocery-form' onSubmit={handleSubmit}></form>
+      <form className='grocery-form' onSubmit={handleSubmit}>
+        {alert.show && <Alert />}
+        <h3>grocery bud</h3>
+        <div className='form-control'>
+          <input type='text' />
+          <button type='submit' className='submit-btn'>
+            {isEditing ? 'edit' : 'submit'}
+          </button>
+        </div>
+      </form>
       <div className='grocery-container'>
         <List />
         <button className='clear-btn'>clear items</button>
