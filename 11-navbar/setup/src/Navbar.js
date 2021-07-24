@@ -12,8 +12,24 @@ const Navbar = () => {
           <FaBars />
         </button>
       </div>
-      <div className="links-container show-container"></div>
-      <ul className="social-icons"></ul>
+      
+      <ul className="social-icons">
+        <li>
+            <a href='https://www.twitter.com'>
+              <FaTwitter />
+            </a>
+          </li>
+          <li>
+            <a href='https://www.twitter.com'>
+              <FaTwitter />
+            </a>
+          </li>
+          <li>
+            <a href='https://www.twitter.com'>
+              <FaTwitter />
+            </a>
+          </li>
+      </ul>
     </div>
   </nav>
 }

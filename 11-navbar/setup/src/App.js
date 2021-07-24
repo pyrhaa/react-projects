@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from './Navbar'
-function App() {
+import Sidebar from './Sidebar'
+
+const App = () => {
   return (
     <>
       <Navbar />
