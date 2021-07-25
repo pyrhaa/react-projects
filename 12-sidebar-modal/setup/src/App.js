@@ -5,7 +5,9 @@ import Home from './Home';
 function App() {
   return (
     <>
-      <h2>hello</h2>
+      <Home />
+      <Modal />
+      <Sidebar />
     </>
   );
 }
