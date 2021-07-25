@@ -1,15 +1,12 @@
-import React from 'react'
-import Navbar from './Navbar'
-import Sidebar from './Sidebar'
+import React from 'react';
+import Navbar from './Navbar';
 
-// reprendre a 4h54min31s
 const App = () => {
   return (
     <>
       <Navbar />
-      <Sidebar />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
