@@ -10,11 +10,32 @@ const AppProvider = ({ children }) => {
     setIsSidebarOpen(true);
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const closeSidebar = () => {
+    setIsModalOpen(false);
   };
 
-  return <AppContext.Provider value='Azul'>{children}</AppContext.Provider>;
+  const openModal = () => {
+    setIsSidebarOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <AppContext.Provider
+      value={{
+        isSidebarOpen,
+        isModalOpen,
+        openSidebar,
+        closeSidebar,
+        openModal,
+        closeModal
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 //custom hook
