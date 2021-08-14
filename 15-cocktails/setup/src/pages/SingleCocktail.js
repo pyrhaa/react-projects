@@ -1,14 +1,75 @@
-import React from 'react'
-import Loading from '../components/Loading'
-import { useParams, Link } from 'react-router-dom'
-const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
+import React from 'react';
+import Loading from '../components/Loading';
+import { useParams, Link } from 'react-router-dom';
+const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
 const SingleCocktail = () => {
+  const { id } = useParams();
+  const [loading, setLoading] = React.useState(false);
+  const [cocktail, setCocktail] = React.useState(null);
+
+  React.useEffect(() => {
+    setLoading(true);
+    const getCocktail = async () => {
+      try {
+        const res = await fetch(`${url}${id}`);
+        const data = await res.json();
+        if (data.drinks) {
+          const {
+            strDrink: name,
+            strDrinkThumb: image,
+            strAlcoholic: info,
+            strCategory: category,
+            strGlass: glass,
+            strInstructions: instructions,
+            strIngredients1,
+            strIngredients2,
+            strIngredients3,
+            strIngredients4,
+            strIngredients5
+          } = data.drinks[0];
+          const ingredients = [
+            strIngredients1,
+            strIngredients2,
+            strIngredients3,
+            strIngredients4,
+            strIngredients5
+          ];
+          const newCocktail = {
+            name,
+            image,
+            info,
+            category,
+            glass,
+            instructions,
+            ingredients
+          };
+          setCocktail(newCocktail);
+        } else {
+          setCocktail(null);
+        }
+        setLoading(false);
+      } catch (e) {
+        console.log(e);
+        setLoading(false);
+      }
+    };
+    getCocktail();
+  }, [id]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (!cocktail) {
+    return <h2 className='section-title'>no cocktail to display</h2>;
+  }
+
   return (
     <div>
-      <h2>single cocktail page </h2>
+      <h2>{id}</h2>
     </div>
-  )
-}
+  );
+};
 
-export default SingleCocktail
+export default SingleCocktail;
