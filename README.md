@@ -1,6 +1,8 @@
 #### Tutorial Video
+From John Smilga
 
-(React Tutorial)[https://youtu.be/iZhV0bILFb0]
+(React Tutorial playlist)[https://youtu.be/iZhV0bILFb0]
+(all-in-one video freecodecamp)[https://www.youtube.com/watch?v=a_7Z7C_JCyo]
 
 #### All Projects
 
